@@ -26,3 +26,18 @@ if (age === "over65") {
 } else {
     console.log(`Il prezzo del tuo biglietto è di ${price}€.`);
 }
+
+
+// Calcolo prezzo
+
+function generate() {
+    var name = document.getElementById("name").value;
+    document.getElementById("display-name").innerHTML = name;
+
+    var discount = document.getElementById("distance").value;
+    document.getElementById("display-discount").innerHTML = discount;
+
+    document.getElementById("display-price").innerHTML = price;
+
+
+  }
