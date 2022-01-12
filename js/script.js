@@ -31,13 +31,18 @@ if (age === "over65") {
 // Calcolo prezzo
 
 function generate() {
-    var name = document.getElementById("name").value;
+
+    let name = document.getElementById("name").value;
     document.getElementById("display-name").innerHTML = name;
-
-    var discount = document.getElementById("distance").value;
+    
+    let discount = document.getElementById("distance").value;
     document.getElementById("display-discount").innerHTML = discount;
+    
 
-    document.getElementById("display-price").innerHTML = price;
+    // Valori fissi
+    document.getElementById("carriage").innerHTML = 5;
 
+    document.getElementById("cp").innerHTML = '92911';
 
+    document.getElementById("display-price").innerHTML = price + ' €';
   }
