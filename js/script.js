@@ -1,48 +1,77 @@
 console.log('JS OK');
 
-// Richiesta informazioni utente
-const name = document.getElementById("name").value;
-console.log(name);
+// Recupero informazioni DOM
+// Form
+const name = document.getElementById("name");
 
-const distance = document.getElementById("distance").value;
-console.log(distance);
+const distance = document.getElementById("distance");
 
-const age = document.getElementById("age").value;
-console.log(age);
+const age = document.getElementById("age");
+const generateButton = document.getElementById("generate");
+const cancelButton = document.getElementById("cancel");
 
-// Calcolo prezzo
-let price = distance * 0.21;
+// Ticket
+const ticketSection =document.getElementById("ticket")
+const namePlaceholder =document.getElementById("display-name")
+const discountPlaceholder =document.getElementById("display-discount")
+const carriagePlaceholder =document.getElementById("carriage")
+const cpPlaceholder =document.getElementById("cp")
+const pricePlaceholder =document.getElementById("display-price")
 
-// Sconti per età
-let priceUnder18 = price * 0.80;
-let priceOver65 = price * 0.60;
+// Lego un evento al bottone
 
-if (age === "over65") {
-    price = priceOver65;
-    console.log(`Hai ricevuto lo sconto Over 65. Il prezzo del tuo biglietto è di ${priceOver65}€.`);
-} else if (age === "under18") {
-    price = priceUnder18;
-    console.log(`Hai ricevuto lo sconto Over 18. Il prezzo del tuo biglietto è di ${priceUnder18}€.`);
-} else {
-    console.log(`Il prezzo del tuo biglietto è di ${price}€.`);
-}
+generateButton.addEventListener('click', function() {
+    // Recupero i value
+    const nameValue = name.value;
+    const distanceValue = parseInt(distance.value);
+    const ageValue = age.value;
+
+    // Calcolo il prezzo
+    let price = 0.21 * distance.value;
+    let discountType = 'Tariffa ordinaria';
+    console.log(price)
+    console.log(age.value)
+
+    // Calcolo lo sconto
+    if (age.value === "over65") {
+        price = price * 0.6;
+        discountType = 'Tariffa Senior'
+    } else if (age.value === "under18") {
+        price = price * 0.8;
+        discountType = 'Tariffa Giovani'
+    }
+
+    // Randomizzamiano la carrozza
+    const carNum = Math.floor(Math.random() * 12) + 1;
+
+    // Randomizziamo il CP
+    const cpNum = Math.floor(Math.random() * (100000 - 90000))+ 90000; // Numero da 90000 a 99999
+
+    //Math.floor(Math.radom() (max - min)) + min
+
+    // Display result
+    namePlaceholder.innerText = nameValue;
+    pricePlaceholder.innerText = price.toFixed(2) + '€';
+    discountPlaceholder.innerText = discountType;
+    carriagePlaceholder.innerText = carNum;
+    cpPlaceholder.innerText = cpNum;
+
+    // Ticket visible add
+    ticket.classList.add('visible');
+})
+
+cancelButton.addEventListener('click', function() {
+    // Resetto i valori
+
+    const fields = document.querySelectorAll('.form-field');
 
 
-// Calcolo prezzo
 
-function generate() {
+    name.value = '';
+    age.value = 'over18';
+    distance.value = 10;
 
-    let name = document.getElementById("name").value;
-    document.getElementById("display-name").innerHTML = name;
-    
-    let discount = document.getElementById("distance").value;
-    document.getElementById("display-discount").innerHTML = discount;
-    
+    // Ticket visible remove
+    ticket.classList.remove('visible');
 
-    // Valori fissi
-    document.getElementById("carriage").innerHTML = 5;
-
-    document.getElementById("cp").innerHTML = '92911';
-
-    document.getElementById("display-price").innerHTML = price + ' €';
-  }
+})

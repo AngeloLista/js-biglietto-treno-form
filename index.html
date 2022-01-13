@@ -10,30 +10,30 @@
 <body>
 
     <section id="price-calculator">
-        <h1>Calcola il prezzo del tuo biglietto</h1>
+        <h1 class="mb-15">Calcola il prezzo del tuo biglietto</h1>
         <!-- Name -->
-        <div>
+        <div class="mb-15">
             <label for="name">Nome Cognome:</label>
-            <input type="text" id="name" value="Jon Snow">
+            <input type="text" id="name" value="">
         </div>
         <!-- Distance -->
-        <div>
+        <div class="mb-15">
             <label for="distance">Km da percorrere:</label>
             <input type="number" id="distance" value="10">
         </div>
         <!-- Age -->
-        <div>
+        <div class="mb-15">
             <label for="age">Fascia d'età:</label>
             <select name="age" id="age">
-                <option value="over65">Over 65</option>
                 <option value="over18">Maggiorenne</option>
+                <option value="over65">Over 65</option>
                 <option value="under18">Minorenne</option>
             </select>
         </div>
         <!-- Submit -->
-        <button onclick="generate()">Genera</button>
+        <button type="button" id="generate">Genera</button>
         <!-- Cancel -->
-        <input type="button" value="Annulla">
+        <input type="button" id="cancel" value="Annulla">
     </section>
 
     <hr>
